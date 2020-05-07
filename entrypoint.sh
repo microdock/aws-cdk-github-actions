@@ -44,7 +44,7 @@ function installRequirements(){
 
 function runCdk(){
 	echo "Run cdk ${INPUT_CDK_SUBCOMMAND}"
-	output=$(cdk ${INPUT_CDK_SUBCOMMAND}" 2>&1)
+	output=$(cdk ${INPUT_CDK_SUBCOMMAND} 2>&1)
 	exitCode=${?}
 	echo ::set-output name=status_code::${exitCode}
 	echo "${output}"
