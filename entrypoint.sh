@@ -75,6 +75,7 @@ ${output}
 
 function main(){
 	parseInputs
+	ls
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	installRequirements
