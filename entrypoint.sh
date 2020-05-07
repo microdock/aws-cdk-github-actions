@@ -43,8 +43,8 @@ function installRequirements(){
 }
 
 function runCdk(){
-	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
-	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1)
+	echo "Run cdk ${INPUT_CDK_SUBCOMMAND}"
+	output=$(cdk ${INPUT_CDK_SUBCOMMAND}" 2>&1)
 	exitCode=${?}
 	echo ::set-output name=status_code::${exitCode}
 	echo "${output}"
@@ -75,7 +75,8 @@ ${output}
 
 function main(){
 	parseInputs
-	ls
+	ls -lah
+	pwd
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
 	installRequirements
