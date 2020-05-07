@@ -29,15 +29,16 @@ function installAwsCdk(){
 	fi
 }
 
-function installPipRequirements(){
-	if [ -e "requirements.txt" ]; then
-		echo "Install requirements.txt"
-		pip install -r requirements.txt >/dev/null 2>&1
+function installRequirements(){
+	if [ -e "package.json" ]; then
+		echo "Install package.json"
+		npm install >/dev/null 2>&1
 		if [ "${?}" -ne 0 ]; then
 			echo "Failed to install requirements.txt"
 		else
 			echo "Successful install requirements.txt"
 		fi
+		npm run build
 	fi
 }
 
@@ -76,7 +77,7 @@ function main(){
 	parseInputs
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installAwsCdk
-	installPipRequirements
+	installRequirements
 	runCdk
 }
 
